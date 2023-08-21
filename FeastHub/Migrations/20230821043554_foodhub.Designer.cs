@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodDeliveryApplication.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230819104641_foodhub")]
+    [Migration("20230821043554_foodhub")]
     partial class foodhub
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

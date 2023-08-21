@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using FeastHub;
+using System.Reflection.Emit;
 
 namespace FeastHub.Auth
 {
@@ -20,6 +21,11 @@ namespace FeastHub.Auth
         public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
         {
 
+        }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            //base.OnModelCreating(builder);
+            builder.Entity<Order>().OwnsOne(x => x.CartItem);
         }
         public DbSet<Vendor> Vendor { get; set; }
         public DbSet<Menu> Menue { get; set; }

@@ -133,7 +133,8 @@ namespace FoodDeliveryApplication.Controllers
             List<Order> Menus =
                    new()
                    {
-                           new Order() { CartItem = new (){1,2}, UserId = 1 },
+                           new Order() { CartItem = new (){1,2}, UserId = 1,OrderId=1 },
+                           //new Order() {  UserId = 1,OrderId=1 },
 
                    };
             return Menus;

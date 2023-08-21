@@ -564,3 +564,10 @@ D:\Personal\BITS\Classes\2ndsem\ServiceOrientedComputing\Assignment\FeastHub\Fea
 D:\Personal\BITS\Classes\2ndsem\ServiceOrientedComputing\Assignment\FeastHub\FeastHub\obj\Debug\net6.0\FeastHub.pdb
 D:\Personal\BITS\Classes\2ndsem\ServiceOrientedComputing\Assignment\FeastHub\FeastHub\obj\Debug\net6.0\FeastHub.genruntimeconfig.cache
 D:\Personal\BITS\Classes\2ndsem\ServiceOrientedComputing\Assignment\FeastHub\FeastHub\obj\Debug\net6.0\ref\FeastHub.dll
+D:\Personal\BITS\Classes\2ndsem\ServiceOrientedComputing\Assignment\FeastHub\FeastHub\bin\Debug\net6.0\FluentValidation.dll
+D:\Personal\BITS\Classes\2ndsem\ServiceOrientedComputing\Assignment\FeastHub\FeastHub\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Personal\BITS\Classes\2ndsem\ServiceOrientedComputing\Assignment\FeastHub\FeastHub\bin\Debug\net6.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+D:\Personal\BITS\Classes\2ndsem\ServiceOrientedComputing\Assignment\FeastHub\FeastHub\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\Personal\BITS\Classes\2ndsem\ServiceOrientedComputing\Assignment\FeastHub\FeastHub\bin\Debug\net6.0\Microsoft.Extensions.DiagnosticAdapter.dll
+D:\Personal\BITS\Classes\2ndsem\ServiceOrientedComputing\Assignment\FeastHub\FeastHub\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+D:\Personal\BITS\Classes\2ndsem\ServiceOrientedComputing\Assignment\FeastHub\FeastHub\bin\Debug\net6.0\Ocelot.dll

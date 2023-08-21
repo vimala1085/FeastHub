@@ -9,11 +9,27 @@ namespace FoodDeliveryApplication.Migrations.AppDb
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "CartItem",
+                columns: table => new
+                {
+                    CartItemId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MenuId = table.Column<int>(type: "int", nullable: false),
+                    VendorId = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CartItem", x => x.CartItemId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Order",
                 columns: table => new
                 {
                     OrderId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,7 +45,8 @@ namespace FoodDeliveryApplication.Migrations.AppDb
                     VendorId = table.Column<int>(type: "int", nullable: false),
                     MenuId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    Rating = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Rating = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Review = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,27 +64,6 @@ namespace FoodDeliveryApplication.Migrations.AppDb
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Vendor", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CartItem",
-                columns: table => new
-                {
-                    CartItemId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    MenuId = table.Column<int>(type: "int", nullable: false),
-                    VendorId = table.Column<int>(type: "int", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    OrderId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CartItem", x => x.CartItemId);
-                    table.ForeignKey(
-                        name: "FK_CartItem_Order_OrderId",
-                        column: x => x.OrderId,
-                        principalTable: "Order",
-                        principalColumn: "OrderId");
                 });
 
             migrationBuilder.CreateTable(
@@ -112,11 +108,6 @@ namespace FoodDeliveryApplication.Migrations.AppDb
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CartItem_OrderId",
-                table: "CartItem",
-                column: "OrderId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Menue_VendorId",
                 table: "Menue",
                 column: "VendorId");
@@ -139,10 +130,10 @@ namespace FoodDeliveryApplication.Migrations.AppDb
                 name: "OperatingHour");
 
             migrationBuilder.DropTable(
-                name: "Ratings");
+                name: "Order");
 
             migrationBuilder.DropTable(
-                name: "Order");
+                name: "Ratings");
 
             migrationBuilder.DropTable(
                 name: "Vendor");

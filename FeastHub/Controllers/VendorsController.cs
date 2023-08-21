@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace FoodDeliveryApplication.Controllers
 {
-  //  [Authorize(Roles = UserRoles.Admin)]
+   [Authorize(Roles = UserRoles.Admin)]
     [Route("api/[controller]")]
     [ApiController]
     public class VendorsController : ControllerBase

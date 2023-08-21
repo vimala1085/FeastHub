@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodDeliveryApplication.Migrations.AppDb
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230819105104_foodhub1")]
+    [Migration("20230821044737_foodhub1")]
     partial class foodhub1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,9 +35,6 @@ namespace FoodDeliveryApplication.Migrations.AppDb
                     b.Property<int>("MenuId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("OrderId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
@@ -45,8 +42,6 @@ namespace FoodDeliveryApplication.Migrations.AppDb
                         .HasColumnType("int");
 
                     b.HasKey("CartItemId");
-
-                    b.HasIndex("OrderId");
 
                     b.ToTable("CartItem");
                 });
@@ -113,6 +108,9 @@ namespace FoodDeliveryApplication.Migrations.AppDb
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderId"), 1L, 1);
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("OrderId");
 
                     b.ToTable("Order");
@@ -131,6 +129,10 @@ namespace FoodDeliveryApplication.Migrations.AppDb
 
                     b.Property<decimal>("Rating")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Review")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -160,13 +162,6 @@ namespace FoodDeliveryApplication.Migrations.AppDb
                     b.ToTable("Vendor");
                 });
 
-            modelBuilder.Entity("FeastHub.CartItem", b =>
-                {
-                    b.HasOne("FeastHub.Order", null)
-                        .WithMany("CartItem")
-                        .HasForeignKey("OrderId");
-                });
-
             modelBuilder.Entity("FeastHub.Menu", b =>
                 {
                     b.HasOne("FeastHub.Vendor", null)
@@ -179,11 +174,6 @@ namespace FoodDeliveryApplication.Migrations.AppDb
                     b.HasOne("FeastHub.Vendor", null)
                         .WithMany("OperatingHours")
                         .HasForeignKey("VendorId");
-                });
-
-            modelBuilder.Entity("FeastHub.Order", b =>
-                {
-                    b.Navigation("CartItem");
                 });
 
             modelBuilder.Entity("FeastHub.Vendor", b =>
