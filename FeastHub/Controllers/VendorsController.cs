@@ -31,29 +31,8 @@ namespace FoodDeliveryApplication.Controllers
           {
               return NotFound();
             }
-            // .Include("Lodgings")
-            //var test1 = (from c in _context.Vendor
-            //             join e in _context.menu.Emails
-            //                 on c.id equals e.id_contact
-            //             join t in db.Tags
-            //             on c.id equals t.id_contact
-            //             join p in db.Phones on c.id equals p.id_contact
-            //             select new
-            //             {
-            //                 id = c.id,
-            //                 phones = p.number,
-            //                 emails = e.email1,
-            //                 tags = t.tag1,
-            //                 firstname = c.firstname,
-            //                 lastname = c.lastname,
-            //                 address = c.address,
-            //                 city = c.city,
-            //                 bookmarked = c.bookmarked,
-            //                 notes = c.notes
-            //             }).ToList();
-            // var getdeatils = VendorContext.Vendors;
-            // _context.Vendor.Menus
-            var vendors = VendorContext.Vendors;
+            
+            var vendors = _context.Vendor;
             return  vendors;
         }
 
@@ -66,7 +45,7 @@ namespace FoodDeliveryApplication.Controllers
               return NotFound();
           }
             var vendor = await _context.Vendor.FindAsync(id);
-            vendor = VendorContext.Vendors.FirstOrDefault(x=>x.Id == id);
+            //vendor = VendorContext.Vendors.FirstOrDefault(x=>x.Id == id);
            // return vendors;
             if (vendor == null)
             {
@@ -148,27 +127,27 @@ namespace FoodDeliveryApplication.Controllers
         }
        
     }
-    public class VendorContext
-    {
-        public static List<Vendor> Vendors = new()
-            {
-                    new Vendor(){ Id=1,Name="Dindigul Thalappakatti Restaurant",
-                        Menus=new(){ 
-                            new Menu(){ MenuId=1,Name="Jeera Pulao",Price=161},
-                           new Menu() { MenuId=2,Name="Mutton Biryani",Price=320},
-                            new Menu(){ MenuId=3,Name="JChicken Biryani",Price=220}
-                        },
-                        OperatingHours=new(){new OperatingHours() { DayOfWeek=DayOfWeek.Sunday,OpeningTime= "7:00 AM",ClosingTime= "11:30 PM" ,OperatingHoursId=1 } ,
-                        new OperatingHours() { DayOfWeek=DayOfWeek.Monday,OpeningTime= "8:00 AM",ClosingTime= "11:00 PM" ,OperatingHoursId=2},
-                        new OperatingHours() { DayOfWeek=DayOfWeek.Tuesday,OpeningTime= "8:00 AM",ClosingTime= "11:00 PM", OperatingHoursId = 3},
-                        new OperatingHours() { DayOfWeek=DayOfWeek.Wednesday,OpeningTime= "8:00 AM",ClosingTime= "11:00 PM", OperatingHoursId = 4},
-                        new OperatingHours() { DayOfWeek=DayOfWeek.Thursday,OpeningTime= "8:00 AM",ClosingTime= "11:00 PM" , OperatingHoursId = 5},
-                        new OperatingHours() { DayOfWeek=DayOfWeek.Friday,OpeningTime= "8:00 AM",ClosingTime= "11:00 PM" , OperatingHoursId = 6},
-                        new OperatingHours() { DayOfWeek=DayOfWeek.Saturday,OpeningTime= "7:00 AM",ClosingTime= "11:30 PM"  , OperatingHoursId = 7}
-                        },
+    ////public class VendorContext
+    ////{
+    ////    public static List<Vendor> Vendors = new()
+    ////        {
+    ////                new Vendor(){ Id=1,Name="Dindigul Thalappakatti Restaurant",
+    ////                    Menus=new(){ 
+    ////                        new Menu(){ MenuId=1,Name="Jeera Pulao",Price=161},
+    ////                       new Menu() { MenuId=2,Name="Mutton Biryani",Price=320},
+    ////                        new Menu(){ MenuId=3,Name="JChicken Biryani",Price=220}
+    ////                    },
+    ////                    OperatingHours=new(){new OperatingHours() { DayOfWeek=DayOfWeek.Sunday,OpeningTime= "7:00 AM",ClosingTime= "11:30 PM" ,OperatingHoursId=1 } ,
+    ////                    new OperatingHours() { DayOfWeek=DayOfWeek.Monday,OpeningTime= "8:00 AM",ClosingTime= "11:00 PM" ,OperatingHoursId=2},
+    ////                    new OperatingHours() { DayOfWeek=DayOfWeek.Tuesday,OpeningTime= "8:00 AM",ClosingTime= "11:00 PM", OperatingHoursId = 3},
+    ////                    new OperatingHours() { DayOfWeek=DayOfWeek.Wednesday,OpeningTime= "8:00 AM",ClosingTime= "11:00 PM", OperatingHoursId = 4},
+    ////                    new OperatingHours() { DayOfWeek=DayOfWeek.Thursday,OpeningTime= "8:00 AM",ClosingTime= "11:00 PM" , OperatingHoursId = 5},
+    ////                    new OperatingHours() { DayOfWeek=DayOfWeek.Friday,OpeningTime= "8:00 AM",ClosingTime= "11:00 PM" , OperatingHoursId = 6},
+    ////                    new OperatingHours() { DayOfWeek=DayOfWeek.Saturday,OpeningTime= "7:00 AM",ClosingTime= "11:30 PM"  , OperatingHoursId = 7}
+    ////                    },
 
-            }
-        };
-    }
+    ////        }
+    ////    };
+    //}
     
 }

@@ -23,16 +23,18 @@ namespace FoodDeliveryApplication.Controllers
         [Route("searchfood")]
         // GET: api/Orders
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<FoodItems>>> GetOrder(string name)
+        public async Task<ActionResult<IEnumerable<Order>>> GetOrder(string name)
         {
             if (_context.Order == null)
             {
                 return NotFound();
             }
-            var data = Menus.FindAll(x => x.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
+            // var data = await _context.FoodItems.FindAsync((name, StringComparison.OrdinalIgnoreCase));
 
-
+            var data = _context.Order;
+#pragma warning disable CS8603 // Possible null reference return.
             return data;
+#pragma warning restore CS8603 // Possible null reference return.
 
         }
 
@@ -95,22 +97,22 @@ namespace FoodDeliveryApplication.Controllers
             //     return Problem("Entity set 'AppDbContext.Order'  is null.");
             // }
             //// _context.Order.Add(order);
-            // await _context.SaveChangesAsync();
-           var cartitem= AddToCart(cart);
+            await _context.SaveChangesAsync();
+          // var cartitem= AddToCart(cart);
           //  return CreatedAtAction("AddToCart", new { id = cart.CartItems.CartItemId }, cartitem);
-          return Ok(cartitem);
-        }
+         return Ok(cart);
+        }    //    private List<Cart> AddToCart(Cart cart)
+    //    {
+    //           List<Cart> Menus =
+    //                  new()
+    //                  {
+    //                       new Cart() { CartItems = new CartItem(){CartItemId=1,MenuId=2,Quantity=2,VendorId=1}, UserId = 1 },
 
-        private List<Cart> AddToCart(Cart cart)
-        {
-               List<Cart> Menus =
-                      new()
-                      {
-                           new Cart() { CartItems = new CartItem(){CartItemId=1,MenuId=2,Quantity=2,VendorId=1}, UserId = 1 },
+    //                  };
+    //        return Menus;
+    //}
 
-                      };
-            return Menus;
-    }
+
 
 
         [Route("OrderFood")]
@@ -164,13 +166,13 @@ namespace FoodDeliveryApplication.Controllers
         {
             return (_context.Order?.Any(e => e.UserId == id)).GetValueOrDefault();
         }
-        public static List<FoodItems> Menus =
-                      new()
-                      {
-                           new FoodItems() { MenuId = 1, Name = "Jeera Pulao" },
-                           new FoodItems() { MenuId = 2, Name = "Mutton Biryani" },
-                           new FoodItems() { MenuId = 3, Name = "JChicken Biryani" }
-                      };
+        //public static List<FoodItems> Menus =
+        //              new()
+        //              {
+        //                   new FoodItems() { MenuId = 1, Name = "Jeera Pulao" },
+        //                   new FoodItems() { MenuId = 2, Name = "Mutton Biryani" },
+        //                   new FoodItems() { MenuId = 3, Name = "JChicken Biryani" }
+        //              };
     }
    
     public class FoodItems
